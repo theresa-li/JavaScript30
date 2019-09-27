@@ -63,13 +63,6 @@
       position: absolute;
       top: 50%;
       transform-origin: 100%;
-      transform: rotate(90deg);
-      transition: all 0.05s;
-      transition-timing-function: cubic-bezier(0.1, 3, 0.5, 1);
-    }
-
-    .notransition {
-      transition: none;
     }
 
   </style>
@@ -83,16 +76,22 @@
       const now = new Date();
 
       const secs = now.getSeconds();
+      if (secs === 0) secHand.style.transition = 'none';
       const secDeg = ((secs / 60) * 360) + 90;
       secHand.style.transform = `rotate(${secDeg}deg)`;
+      secHand.style.transition = 'all 0.05s cubic-bezier(0.1, 3, 0.5, 1)';
 
       const mins = now.getMinutes();
+      if (mins === 0) minHand.style.transition = 'none';
       const minDeg = ((mins / 60) * 360) + 90;
       minHand.style.transform = `rotate(${minDeg}deg)`;
+      minHand.style.transition = 'all 0.05s cubic-bezier(0.1, 3, 0.5, 1)';
 
       const hrs = now.getHours();
+      if (hrs === 0) hrHand.style.transition = 'none';
       const hrDeg = ((hrs / 12) * 360) + 90;
       hrHand.style.transform = `rotate(${hrDeg}deg)`;
+      hrHand.style.transition = 'all 0.05s cubic-bezier(0.1, 3, 0.5, 1)';
     }
 
     setInterval(setTime, 1000);
